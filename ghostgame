@@ -1,0 +1,44 @@
+import random
+import time
+scared = 0
+score = 0
+room = 1
+print("Welcome to the haunted mansion!")
+time.sleep(2)
+print("You will have to pass through ten rooms to make it out alive.")
+time.sleep(3)
+print("Hope you don't find a ghost!")
+time.sleep(2)
+while scared == 0:
+    print("You are in room: ")
+    print(room)
+    print("Three doors in front of you. Which door do you choose?")
+    ghostdoor = random.randint(1,3)
+    chosendoor = int(input("Type 1, 2 or 3. "))
+    if chosendoor > 3:
+        print("Where do you think you're going? GAME OVER")
+        print("")
+        print("You made it to room: ")
+        print(room)
+        deathscreen = input("Press F5 or RUN to start again!")
+    print("")
+    print("You open the door and you see..")
+    print("")
+    time.sleep(2)
+    if chosendoor == ghostdoor:
+        print("...a ghost! GAME OVER")
+        print("")
+        print("You made it to room: ")
+        print(room)
+        scared = 1
+    else:
+        print("An empty room. Phew!")
+        room = room + 1
+        if room == 10:
+            print("")
+            print("You got out of the mansion! YOU WIN")
+            win = input(“")
+        print("----------------------------------------------")
+    
+
+
