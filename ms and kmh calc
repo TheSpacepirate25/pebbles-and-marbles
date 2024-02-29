@@ -1,0 +1,18 @@
+confirmation = "false"
+print("m/s and km/h Calculator")
+while confirmation == "false":
+    distance = float(input("Please enter the distance covered in metres. "))
+    time = float(input("Please enter the time taken to cover the distance in seconds. "))
+    print("~")
+    print("CONFIRM: You travelled", distance, "metres in", time, "seconds?")
+    confirm = input("Please type YES to continue, or NO to re-enter the information. ")
+    if confirm == ("YES"):
+        speedInMS = distance / time
+        print("--------------------------------------------------------------------------------")
+        print("Speed in metres per second or m/s is",speedInMS)
+        speedinKPH = speedInMS * 3.6
+        print("Speed in kilometres per hour or kph is", speedinKPH)
+        print("RERUNNING PROGRAM...")
+    elif confirm == ("NO"):
+        print("--------------------------------------------------------------------------------")
+        confirmation = "false"
