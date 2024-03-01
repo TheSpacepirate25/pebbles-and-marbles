@@ -1,0 +1,88 @@
+#imports different packages needed
+import random
+import time
+print('''  ______   __  _   _    ____ _  __
+ |  _ \ \ / / | | / \  / ___| |/ /
+ | |_) \ V /  | |/ _ \| |   | ' /
+ |  __/ | | |_| / ___ \ |___| . \\
+ |_|    |_|\___/_/   \_\____|_|\_\\''')
+
+print('Dealer will reveal his first card, max card value is 10')
+time.sleep(2)
+#variable setup
+Pcardval = 0
+Dcardval = 0
+hitstand  = 'none'
+Dbust = False
+Pbust = False
+def gencard():
+  return random.randint(1,10)
+def addtoD():
+  global Dcardval
+  Dcardval = Dcardval + gencard()
+
+def addtoP():
+  global Pcardval
+  Pcardval = Pcardval + gencard()
+  
+def playerTurnStart():
+  while Pcardval < 21:
+    hitstand = input('Hit or stand? ').lower()
+    if hitstand == 'hit':
+      addtoP()
+      print(Pcardval)
+    elif hitstand == 'stand':
+      print("You stand! Let's see who won")
+      seewhowon()
+      
+def seewhowon():
+  print('Dealer: ',Dcardval)
+  print('Player:', Pcardval)
+  if Dcardval > Pcardval:
+    print('Dealer wins!')
+  elif Dcardval < Pcardval:
+    print('Player wins!')
+  end = 0
+  end = input('')
+    
+def someonebusts():
+  if Dcardval > 21:
+    print('Dealer busts! You win!')
+  elif Pcardval > 21:
+    print('You bust! Dealer wins!')
+  elif Pcardval or Dcardval == 21:
+    seewhowon()
+    
+def dealerAIstart():
+  global Dstand
+  global Dbust
+  Dstand = False
+  while Dcardval < 21: #or Dstand is True:
+    if Dcardval < 16:
+      addtoD()
+      #print('DEBUG dealerhit', Dcardval)
+      if Dcardval >= 21:
+        Dbust = True
+    elif Dcardval >= 17:
+      print('Dealer is standing')
+      #print('DEBUG dealerstand', Dcardval)
+      Dstand = True
+      playerTurnStart()
+    elif Dcardval > 21:
+      print('')
+    
+    
+while not Dbust and not Pbust:
+  print('Dealer is drawing his first card..')
+  time.sleep(1)
+  addtoD()
+  print("It's a " + str(Dcardval))
+  time.sleep(1)
+  print('Dealer is drawing his second card..')
+  time.sleep(1)
+  addtoD()
+  #print('DEBUG dealersecond', Dcardval)
+  dealerAIstart()
+  print('Your turn!')
+  playerTurnStart()
+someonebusts()
