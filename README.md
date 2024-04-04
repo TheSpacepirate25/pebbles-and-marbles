@@ -1,1 +1,1 @@
-This repository is dedicated to all my smaller python projects. Most of the projects are are finished, debugged and working fine. Others, marked with a :( at the start of the title contain bugs, haven't been finished or otherwise don't work.
+This repository is dedicated to all my smaller coding projects. Most of the projects are are finished, debugged and working fine. Others, marked with a :( at the start of the title contain bugs, haven't been finished or otherwise don't work.
